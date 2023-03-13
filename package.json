@@ -8,5 +8,10 @@
     "watch": "npx nodemon index.ts"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.21.0",
+    "@types/jest": "^29.4.1",
+    "jest": "^29.5.0"
+  }
 }

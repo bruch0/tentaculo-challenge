@@ -1,6 +1,6 @@
 import fs from "fs";
 
-const getFileData = (): string[] => {
+export const getFileData = (): string[] => {
   const fileData = fs.readFileSync("./data.txt", "utf-8").split("\n");
 
   if (fileData.length === 0)
@@ -13,7 +13,7 @@ const getFileData = (): string[] => {
   return fileData;
 };
 
-const readFileData = (
+export const readFileData = (
   fileData: string[]
 ): {
   tableSize: string;
@@ -37,7 +37,7 @@ const readFileData = (
   return { tableSize, roversData };
 };
 
-const validateFileData = ({
+export const validateFileData = ({
   tableSize,
   roversData,
 }: {
@@ -84,7 +84,9 @@ const validateFileData = ({
   });
 };
 
-const getRoverDirection = (roverPositon: string): "W" | "N" | "S" | "E" => {
+export const getRoverDirection = (
+  roverPositon: string
+): "W" | "N" | "S" | "E" => {
   const roverDirection = roverPositon[4];
 
   if (
@@ -99,7 +101,7 @@ const getRoverDirection = (roverPositon: string): "W" | "N" | "S" | "E" => {
   return roverDirection;
 };
 
-const registerMovements = ({
+export const registerMovements = ({
   roversData,
 }: {
   roversData: { initialPosition: string; movement: string }[];
