@@ -98,3 +98,35 @@ const getRoverDirection = (roverPositon: string): "W" | "N" | "S" | "E" => {
 
   return roverDirection;
 };
+
+const registerMovements = ({
+  roversData,
+}: {
+  roversData: { initialPosition: string; movement: string }[];
+}) => {
+  const movementCase = {
+    E: {
+      left: "N",
+      right: "S",
+      move: (position: "X" | "Y") => (position === "X" ? 1 : 0),
+    },
+    W: {
+      left: "S",
+      right: "N",
+      move: (position: "X" | "Y") => (position === "X" ? -1 : 0),
+    },
+    N: {
+      left: "W",
+      right: "E",
+      move: (position: "X" | "Y") => (position === "X" ? 0 : 1),
+    },
+    S: {
+      left: "E",
+      right: "W",
+      move: (position: "X" | "Y") => (position === "X" ? 0 : -1),
+    },
+  };
+};
+
+validateFileData(readFileData(getFileData()));
+registerMovements(readFileData(getFileData()));
