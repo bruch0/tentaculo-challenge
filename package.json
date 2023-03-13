@@ -1,0 +1,9 @@
+{
+  "name": "tentaculo",
+  "version": "0.0.1",
+  "exports": "./index.js",
+  "scripts": {},
+  "author": "bruch0",
+  "license": "ISC",
+  "type": "module"
+}
