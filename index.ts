@@ -83,3 +83,18 @@ const validateFileData = ({
       );
   });
 };
+
+const getRoverDirection = (roverPositon: string): "W" | "N" | "S" | "E" => {
+  const roverDirection = roverPositon[4];
+
+  if (
+    roverDirection !== "N" &&
+    roverDirection !== "W" &&
+    roverDirection !== "S" &&
+    roverDirection !== "E"
+  ) {
+    throw new Error("Posição inesperada");
+  }
+
+  return roverDirection;
+};
