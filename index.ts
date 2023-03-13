@@ -126,6 +126,31 @@ const registerMovements = ({
       move: (position: "X" | "Y") => (position === "X" ? 0 : -1),
     },
   };
+
+  roversData.map((rover) => {
+    let position = rover.initialPosition;
+
+    rover.movement.split("").map((movement) => {
+      const roverPositionX = Number(position[0]);
+      const roverPositionY = Number(position[2]);
+      const roverDirection = getRoverDirection(position);
+
+      if (movement === "L")
+        position = `${roverPositionX} ${roverPositionY} ${movementCase[roverDirection].left}`;
+
+      if (movement === "R")
+        position = `${roverPositionX} ${roverPositionY} ${movementCase[roverDirection].right}`;
+
+      if (movement === "M")
+        position = `${
+          roverPositionX + movementCase[roverDirection].move("X")
+        } ${
+          roverPositionY + movementCase[roverDirection].move("Y")
+        } ${roverDirection}`;
+    });
+
+    console.log(position);
+  });
 };
 
 validateFileData(readFileData(getFileData()));
