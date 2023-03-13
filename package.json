@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "run": "ts-node bootstrap.ts",
+    "bootstrap": "ts-node bootstrap.ts",
     "watch": "npx nodemon bootstrap.ts",
-    "test:watch": "npx jest --watch",
     "test:coverage": "npx jest --coverage"
   },
   "author": "",
