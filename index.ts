@@ -1,14 +1,22 @@
 import fs from "fs";
 
 export const getFileData = (): string[] => {
-  const fileData = fs.readFileSync("./data.txt", "utf-8").split("\n");
+  const fileData = fs
+    .readFileSync("./data.txt", "utf-8")
+    .split("\n")
+    .filter((data) => data !== "");
 
   if (fileData.length === 0)
     throw new Error("Não há nenhum conteúdo no arquivo indicado");
 
   if (fileData.length === 1) throw new Error("Não há nenhuma sonda");
 
-  if (fileData.length < 3) throw new Error("Não há dados suficientes");
+  if (fileData.length === 2) throw new Error("Não há dados suficientes");
+
+  if ((fileData.length - 1) % 2 !== 0)
+    throw new Error(
+      "Cada sonda precisa de uma posição inicial e uma instrução de movimentos"
+    );
 
   return fileData;
 };
@@ -155,11 +163,9 @@ export const registerMovements = ({
   });
 };
 
-const bootstrap = () => {
+export const bootstrap = () => {
   const fileData = readFileData(getFileData());
 
   validateFileData(fileData);
   registerMovements(fileData);
 };
-
-bootstrap();
