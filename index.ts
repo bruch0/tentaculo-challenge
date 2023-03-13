@@ -12,3 +12,27 @@ const getFileData = (): string[] => {
 
   return fileData;
 };
+
+const readFileData = (
+  fileData: string[]
+): {
+  tableSize: string;
+  roversData: { initialPosition: string; movement: string }[];
+} => {
+  const tableSize = fileData[0];
+  const roversData: { initialPosition: string; movement: string }[] = [];
+
+  const fileDataSanitized = fileData.slice(1);
+
+  const roverDataSize = 2;
+  for (let i = 0; i < fileDataSanitized.length; i += roverDataSize) {
+    const roverData = fileDataSanitized.slice(i, i + roverDataSize);
+
+    roversData.push({
+      initialPosition: roverData[0],
+      movement: roverData[1],
+    });
+  }
+
+  return { tableSize, roversData };
+};
