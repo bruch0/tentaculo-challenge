@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "run": "ts-node index.ts",
-    "watch": "npx nodemon index.ts"
+    "run": "ts-node bootstrap.ts",
+    "watch": "npx nodemon bootstrap.ts",
+    "test:watch": "npx jest --watch",
+    "test:coverage": "npx jest --coverage"
   },
   "author": "",
   "license": "ISC",
