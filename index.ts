@@ -153,5 +153,11 @@ const registerMovements = ({
   });
 };
 
-validateFileData(readFileData(getFileData()));
-registerMovements(readFileData(getFileData()));
+const bootstrap = () => {
+  const fileData = readFileData(getFileData());
+
+  validateFileData(fileData);
+  registerMovements(fileData);
+};
+
+bootstrap();
